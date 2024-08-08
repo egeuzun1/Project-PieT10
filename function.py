@@ -3,7 +3,7 @@ import pandas as pd
 import random as rand
 
 
-data=pd.read_csv("main.csv")
+data=pd.read_csv("main.csv",encoding="ISO-8859-1")
 second_row=data.iloc[1]
 a=rand.choice(second_row)
 
