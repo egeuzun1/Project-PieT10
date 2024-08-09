@@ -1,32 +1,44 @@
-
-import numpy as np
 import pandas as pd
 import random as rand
-import csv 
 
 
 movie=pd.read_csv("imdb1000.csv",encoding="ISO-8859-1", on_bad_lines='skip')
 a=rand.randint(1,900)
 b=rand.randint(1,900)
 
+can_sayisi=3
+skor=0
+if movie.loc[a]["year"]==movie.loc[b]["year"]:
+    b=rand.randint(1,900)
 class movie1:
-    #Poster linkini ekleyemedik:()
+    poster=movie.loc[a]["Link"]
     name=movie.loc[a]["name"]
     year=movie.loc[a]["year"]
     
-
 class movie2:
-    #Poster linkini ekleyemedik:(
+    poster=movie.loc[b]["Link"]
     name=movie.loc[b]["name"]
     year=movie.loc[b]["year"]
 
 
-def game(movie1,movie2):
-    print(movie1,"vs",)
-
-
-       
-
-
-
-
+def game():
+    global can_sayisi
+    global skor
+    print(movie1.name,"vs",movie2.name)
+    guess=int(input("Hangisi daha önce çıkan bir filmdir?(1. Film için 1, ikincisi için 2 yazınız.)")) #TODO: tıklayarak nasıl olacak, tryexcept kullanarak
+    def answer():
+        if movie1.year<movie2.year:
+            return 1
+        else:
+            return 2
+    if guess==answer():
+        print("Doğru!\n+1 Puan")
+        skor+=1
+        print(movie1.year,movie2.year)
+        print("Skor:",skor,"Can Sayısı:",can_sayisi)
+        #TODO:SKOR VE CAN HER ZAMAN SAĞ ÜSTTE NASIL YAZACAK
+    elif guess!=answer:
+        print("Yanlış!\n1 Can Kaybettin")
+        can_sayisi-=1
+        print("Skor:",skor,"Can Sayısı:",can_sayisi)
+game()
