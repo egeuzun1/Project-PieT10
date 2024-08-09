@@ -2,9 +2,23 @@ import pandas as pd
 import random as rand
 import time
 
+
 print("\nMovie Guesser")
 time.sleep(2)
-print("Hoş Geldin!\n")
+
+while True:
+    try: 
+        isim=(input("İsminizi Giriniz:" ))
+        if not(isim.isalpha()):
+            raise ValueError
+        
+    except ValueError:
+        print("Lütfen İsminizi Doğru Girdiğinizden Emin Olun")
+    else:
+        break
+    
+time.sleep(2)
+print(f"Hoş Geldin {isim}!\n")
 time.sleep(2)
 print("IMDB Top1000 listesindeki filmlerden karşına çıkacak iki filmden hangisinin daha önce vizyona girdiğini doğru tahmin et, yıldızları topla, oyunu kazan!\n\nUnutma yalnızca 3 yanlış yapma hakkın var" )
 time.sleep(3)
