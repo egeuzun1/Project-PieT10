@@ -7,7 +7,7 @@ import requests
 from io import BytesIO
 
 Image.MAX_IMAGE_PIXELS = None
-df = pd.read_csv('/Users/furkan/Library/IMDb Game/IMDb_dataset.csv', delimiter=';', on_bad_lines='skip')
+df = pd.read_csv('IMDb_dataset.csv', delimiter=';', on_bad_lines='skip')
 
 class Game:
     def __init__(self, root):
