@@ -228,7 +228,7 @@ class Game:
 
 root = tk.Tk()
 root.title("IMDb Tahmin Oyunu")
-root.geometry("790x980")
+root.geometry("950x780")
 
 game = Game(root)
 
