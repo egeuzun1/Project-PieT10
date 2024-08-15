@@ -48,7 +48,7 @@ def game():
             name=movie.loc[b]["name"]
             year=movie.loc[b]["year"]
         print(movie1.name,"vs",movie2.name,"\n")
-        guess=int(input("Hangisi daha önce çıkan bir filmdir?(1. Film için 1, ikincisi için 2 yazınız.)")) #TODO: tıklayarak nasıl olacak, tryexcept kullanarak
+        guess=int(input("Hangisi daha önce çıkan bir filmdir?(1. Film için 1, ikincisi için 2 yazınız.)"))
         def answer():
             if movie1.year<movie2.year:
                 return 1
@@ -59,7 +59,6 @@ def game():
             skor+=1
             print(movie1.year,movie2.year)
             print("Skor:",skor,"Can Sayısı:",can_sayisi)
-            #TODO:SKOR sol üstte VE CAN HER ZAMAN SAĞ ÜSTTE NASIL YAZACAK
         elif guess!=answer:
             print("Yanlış!\n1 Can Kaybettin")
             can_sayisi-=1
@@ -76,7 +75,6 @@ def game():
             yildiz_sayisi+=1
         elif skor==500:
             yildiz_sayisi+=1
-        #sol üstte yıldızlar görünecek
         a=b
         b=rand.randint(1,985)
     
@@ -85,20 +83,19 @@ def game():
         print("Skorunuz:",skor) 
         if skor==0:
             print("--Acemi Balık--")
-        elif skor<10:
+        elif skor>=10:
             print("--Taze Fasulye--\n")
-        elif skor<25:
+        elif skor>=25:
             print("--Sinemasever--")
-        elif skor<50:
+        elif skor>=50:
             print("--Olgunlaşmamış Karpuz--")
-        elif skor<100:
+        elif skor>=100:
             print("--Haşlanmış Patates--")
-        elif skor<250:
+        elif skor>=250:
             print("--Nuri Bilge Ceylan--")
-        elif skor<500:
+        elif skor>=500:
             print("--FilmMaster--")
-    if skor>980:
+    if skor>=980:
             print("Sana sıfat bile vermiyoruz, gidip sosyalleşmeni ve çimene dokunmanı tavsiye ederiz :)")
-#rondom film çıkabilir
       
 game()

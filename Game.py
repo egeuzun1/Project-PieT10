@@ -213,7 +213,7 @@ class Game:
             title = "--Nuri Bilge Ceylan--"
         elif self.score >= 500:
             title = "--FilmMaster--"
-        elif self.score > 980:
+        elif self.score >= 980:
             title = "Sana sıfat bile vermiyoruz, gidip sosyalleşmeni ve çimene dokunmanı tavsiye ederiz :)"
         else:
             title = "Great Job!"
