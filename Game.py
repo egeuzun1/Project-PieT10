@@ -199,26 +199,26 @@ class Game:
         self.star_label.config(text=f"Stars: {self.stars}")
 
     def show_final_message(self):
-        if self.score == 0:
+        if self.score > 0:
             title = "Acemi Balık'sın"
-        elif self.score < 10:
+        elif self.score >= 10:
             title = "--Taze Fasulye--"
-        elif self.score < 25:
+        elif self.score >= 25:
             title = "--Sinemasever--"
-        elif self.score < 50:
+        elif self.score >= 50:
             title = "--Olgunlaşmamış Karpuz--"
-        elif self.score < 100:
+        elif self.score >= 100:
             title = "--Haşlanmış Patates--"
-        elif self.score < 250:
+        elif self.score >= 250:
             title = "--Nuri Bilge Ceylan--"
-        elif self.score < 500:
+        elif self.score >= 500:
             title = "--FilmMaster--"
         elif self.score > 980:
             title = "Sana sıfat bile vermiyoruz, gidip sosyalleşmeni ve çimene dokunmanı tavsiye ederiz :)"
         else:
             title = "Great Job!"
 
-        messagebox.showinfo("Game Over", f"{self.player_name}, {title}\nSkorun: {self.score}.\nStars: {self.stars}")
+        messagebox.showinfo("Game Over", f"{self.player_name}, {title}\nSkorun: {self.score}\nYıldızların: {self.stars}")
 
     def update_score_label(self):
         self.score_label.config(text=f"Skor: {self.score}")
