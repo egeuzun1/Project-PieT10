@@ -8,7 +8,6 @@ from io import BytesIO
 
 Image.MAX_IMAGE_PIXELS = None
 df = pd.read_csv('IMDb_dataset.csv', delimiter=';', on_bad_lines='skip')
-
 class Game:
     def __init__(self, root):
         self.root = root
@@ -94,12 +93,15 @@ class Game:
             return ImageTk.PhotoImage(image)
         except Exception as e:
             messagebox.showinfo("Error", f"Fotoğraf yüklenemedi :( {e}")
-            return
+            return 
 
     def start_game(self):
-        self.player_name = self.name_entry.get()
-        if not self.player_name:
-            messagebox.showwarning("Input Error", "Lütfen İsminizi Doğru Girdiğinizden Emin Olun.")
+        try:
+            self.player_name = self.name_entry.get()
+            if not self.player_name.isalpha():
+                raise ValueError
+        except ValueError as e:
+            messagebox.showwarning("Input Error", "Lütfen İsminizi Doğru Girdiğinizden Emin Olun \n (sadece harf kullanın).")
             return
         
         self.difficulty = self.difficulty_var.get()
@@ -137,7 +139,7 @@ class Game:
             "rating": df.loc[b]["IMDB_Rating"]
         }
         
-        if self.movie1["year"] == self.movie2["year"]:
+        while self.movie1["year"] == self.movie2["year"]:
             b = rand.randint(1, len(df) - 15)
 
         self.movie1_label.config(text=self.movie1["name"])
@@ -199,19 +201,19 @@ class Game:
         self.star_label.config(text=f"Stars: {self.stars}")
 
     def show_final_message(self):
-        if self.score > 0:
+        if self.score < 10:
             title = "Acemi Balık'sın"
-        elif self.score >= 10:
+        elif self.score < 25:
             title = "--Taze Fasulye--"
-        elif self.score >= 25:
+        elif self.score < 50:
             title = "--Sinemasever--"
-        elif self.score >= 50:
+        elif self.score < 100:
             title = "--Olgunlaşmamış Karpuz--"
-        elif self.score >= 100:
+        elif self.score < 250:
             title = "--Haşlanmış Patates--"
-        elif self.score >= 250:
+        elif self.score < 500:
             title = "--Nuri Bilge Ceylan--"
-        elif self.score >= 500:
+        elif self.score < 980:
             title = "--FilmMaster--"
         elif self.score >= 980:
             title = "Sana sıfat bile vermiyoruz, gidip sosyalleşmeni ve çimene dokunmanı tavsiye ederiz :)"
@@ -233,5 +235,3 @@ root.geometry("950x780")
 game = Game(root)
 
 root.mainloop()
-
-   
